@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import useInterval from "use-interval";
+import './app.css'
 
 function App() {
+  const [data, setdata] = useState()
+  const [time, setTime] = useState('')
+  const [stop, setStop] = useState(true)
+  const [state, setState] = useState('Start')
+  function setTime (){
+    
+    while(true){
+
+    }
+  }
+
+  function startStop (){
+    if (stop){
+      setStop(false)
+      setState('Stop')
+    } else{ 
+      setStop(true)
+      setState('Start')
+    }
+  }
+
+  function reset (){
+    setTime('00:00:00')
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="title">Секундомер</h1>
+      <h2 className="time">{time}</h2>
+      <div className="btns">
+        <button onClick={startStop}>{state}</button>
+        <button onClick={reset}>Reset</button>
+      </div>
     </div>
   );
 }
